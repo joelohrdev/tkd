@@ -21,8 +21,18 @@ class ClientFactory extends Factory
      */
     public function definition()
     {
+        $name = $this->faker->company();
+        $slug = \Str::slug($name);
+
         return [
-            //
+            'name' => $name,
+            'slug' => $slug,
+            'status' => $this->faker->randomElement(['active', 'closed', 'prospect']),
+            'address' => $this->faker->address(),
+            'city'    => $this->faker->city(),
+            'state'   => $this->faker->country(),
+            'zip_code' => $this->faker->postcode(),
+            'phone_number' => $this->faker->phoneNumber(),
         ];
     }
 }
